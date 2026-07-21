@@ -1,0 +1,33 @@
+# Claude Code
+.claude/
+
+# PyCharm
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Conda / venv
+.env
+.venv
+env/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
