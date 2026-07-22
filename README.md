@@ -19,8 +19,8 @@ src/                      Python package, torch based, float64 throughout
   shift_maps.py             module 3, reconnection validity shift maps
   mis_combine.py            module 4, MIS balance heuristic combine
   freepath_sampler.py       module 5, volumetric free path sampler (delta tracking)
-  heterogeneous_lookup.py   module 6, stub
-  temporal_history.py       module 7, stub
+  heterogeneous_lookup.py   module 6, heterogeneous local-lookup / A6 trichotomy
+  temporal_history.py       module 7, temporal history buffer + combine (A9/A10)
   pcg32_rng.py              module 8, stub
   furnace_canary.py         module 9, stub
 tests/                     one test file per implemented module
@@ -35,9 +35,9 @@ Modules 1 through 4 form the first checkpoint (they unblock T1 through T11),
 modules 5 and 6 form the next (T12 through T16), and so on. See the test
 plan for the full A/T/G/V dependency table this build order is derived from.
 
-Status as of this commit: modules 1 through 5 are implemented and covered by
-passing tests. Modules 6 through 9 are stubbed (signatures and docstrings
-only, no logic yet).
+Status as of this commit: modules 1 through 7 are implemented and covered by
+passing tests. Modules 8 and 9 are stubbed (signatures and docstrings only,
+no logic yet).
 
 ## Environment
 
