@@ -95,20 +95,21 @@ def test_wsum_gen_gate_drops_history_entirely():
     r_hist.y = 0
     r_hist.wsum = 0.0
     r_hist.M = 8
+    r_hist.confidence = 8
     r_hist.set_p_hat_gen(0.0)
 
     gated = temporal_combine(r_cur, r_hist, target_pdf_fn, rng)
     assert gated.y == 1
-    assert gated.M == r_cur.M  # history contributed zero confidence, not just zero weight
+    assert gated.confidence == r_cur.confidence  # history contributed zero confidence, not just zero weight
 
     # Without the gate (wsum_gen_gate below wsum, so it's treated as valid),
-    # the stale M=8 still leaks into the combined confidence count even
-    # though its own candidate never gets accepted (contribution_weight()==0
+    # the stale confidence=8 still leaks into the combined confidence count
+    # even though its own candidate never gets accepted (contribution_weight()==0
     # when p_hat_gen==0) -- the exact "credited share never delivered by
     # anything" mechanism the gate exists to prevent.
     ungated = temporal_combine(r_cur, r_hist, target_pdf_fn, rng, wsum_gen_gate=-1.0)
-    assert ungated.M == r_cur.M + r_hist.M
-    assert ungated.M != gated.M
+    assert ungated.confidence == r_cur.confidence + r_hist.confidence
+    assert ungated.confidence != gated.confidence
 
 
 def test_m_clamp_input_clamps_history_confidence():
@@ -124,12 +125,13 @@ def test_m_clamp_input_clamps_history_confidence():
     r_hist.update(1, P_HAT[1] / P_GEN, rng)
     r_hist.set_p_hat_gen(P_HAT[1])
     r_hist.M = 1000  # many frames' worth of accumulated confidence
+    r_hist.confidence = 1000
 
     capped = temporal_combine(r_cur, r_hist, target_pdf_fn, rng, m_cap=20)
-    assert capped.M == r_cur.M + 20
+    assert capped.confidence == r_cur.confidence + 20
 
     uncapped = temporal_combine(r_cur, r_hist, target_pdf_fn, rng)
-    assert uncapped.M == r_cur.M + 1000
+    assert uncapped.confidence == r_cur.confidence + 1000
 
 
 def test_history_buffer_reprojection_is_identity_and_first_frame_is_empty():

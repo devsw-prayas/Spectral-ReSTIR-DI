@@ -7,7 +7,23 @@ T-item; every other module in this package builds on `Reservoir`.
 Notation locked in restir_running_notes.md ("Notation locked" section):
     y            — reservoir's currently held candidate sample
     wsum         — running sum of resampling weights w_i = p_hat(x_i)/p_gen(x_i)
-    M            — candidate / confidence count (c_i under M-clamping)
+    M            — RAW streamed-candidate count. Stays the Talbot-
+                   normalization divisor `contribution_weight()` uses
+                   (`wsum/(M*p_hat_gen)`) and is always 1 on a
+                   `mis_combine.combine_reservoirs` output, since that
+                   output's `wsum` is already the fully-shaded
+                   `p_hat(y)*W` value (Bitterli's `Sum_j w_j`), not a
+                   raw multi-candidate sum needing an `/M` division.
+    confidence   — GRIS's pooled/capped confidence `M_r` (c_i under
+                   M-clamping), the count `mis_combine.balance_heuristic_weight`
+                   reads for its MIS ratio. Mirrors `M` for a raw streamed
+                   reservoir (every accepted `update`/`merge` call keeps
+                   them equal); a combine's output instead sets `M=1` and
+                   `confidence` to the pooled, `m_cap`-clamped source
+                   count — session_log_restir_14's fix for the two
+                   incompatible roles `M` used to serve alone (see that
+                   log for the full derivation and the GRIS §6.2 cross-
+                   check that motivated the split).
     p_hat_gen    — target p_hat evaluated at GENERATION time for `y`,
                    tracked separately from any later re-evaluation ("eval")
                    to support the Coverage Lemma's gen/eval split (A9)
@@ -33,6 +49,7 @@ class Reservoir:
         self.y = None
         self.wsum = 0.0
         self.M = 0
+        self.confidence = 0
         self.p_hat_gen = 0.0
 
     def update(self, x_i, w_i: float, rng: torch.Generator) -> bool:
@@ -42,6 +59,7 @@ class Reservoir:
         Returns True iff x_i was just accepted as the new `y`.
         """
         self.M += 1
+        self.confidence += 1
         self.wsum += w_i
         if self.wsum <= 0.0:
             return False
@@ -83,6 +101,7 @@ class Reservoir:
         w = p_hat_self_at_other_y * other.contribution_weight() * other_M
         accepted = self.update(other.y, w, rng)
         self.M += other_M - 1
+        self.confidence += other_M - 1
         if accepted:
             self.p_hat_gen = p_hat_self_at_other_y
         return accepted

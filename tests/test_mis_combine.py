@@ -42,6 +42,7 @@ def test_balance_heuristic_collapses_to_ordinary_when_reconnection_valid():
     for c in (2, 5, 3):
         r = Reservoir()
         r.M = c
+        r.confidence = c
         reservoirs.append(r)
 
     shift_fns = [[_identity, _identity, _identity] for _ in range(3)]
@@ -106,7 +107,8 @@ def test_nonexistent_shift_drops_source_entirely():
 
     # only r_a could ever stream into dest_index=0 -- deterministic outcome
     assert combined.y == 7
-    assert combined.M == r_a.M  # r_b contributed zero confidence, not just zero weight
+    assert combined.M == 1  # combine output's M is always pinned to 1 (session_log_restir_14)
+    assert combined.confidence == r_a.confidence  # r_b contributed zero confidence, not just zero weight
 
 
 if __name__ == "__main__":

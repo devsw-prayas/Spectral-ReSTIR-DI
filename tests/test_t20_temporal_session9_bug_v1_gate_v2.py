@@ -173,7 +173,7 @@ def test_gate_v2_is_a_blunt_instrument_on_a_safe_small_case():
         r_cur = _stream_reservoir(EVAL_TARGET, rng)
         r_hist = _stream_reservoir(_target(g_gen), rng)
         combined = temporal_combine(r_cur, r_hist, EVAL_TARGET, rng)  # default wsum_gen_gate=0.0
-        m_hist_derived[t] = M if combined.M > r_cur.M else 0  # history contributed real confidence?
+        m_hist_derived[t] = M if combined.confidence > r_cur.confidence else 0  # history contributed real confidence?
 
     assert m_hist_derived.mean().item() > m_hist_v2.mean().item() + M * 0.3  # derived rule keeps it far more often
 
