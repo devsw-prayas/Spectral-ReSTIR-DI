@@ -1,7 +1,7 @@
 """T-tier point-probes for module 6 (heterogeneous_lookup.py).
 
-Rank-2 species mixture (session_log_restir_3's V-B/V-C toy family,
-restir_running_notes.md §7 / A6). Every expectation below is computed by
+Rank-2 species mixture, covering the A6 lookup trichotomy. Every
+expectation below is computed by
 exact quadrature over a fixed lambda' grid (no Monte Carlo, no RNG) -- same
 discipline as `free_path_pdf`'s quadrature ground truth, chosen because the
 trichotomy's claims are about *expectations*, which quadrature gives exactly

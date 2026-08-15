@@ -1,8 +1,6 @@
-"""Graphable sweep for G2 (`forward_paper1_test_suite.md`'s G-tier table:
-"V-B optical-depth scaling sweep (naive bias vs. tau)"), reconstructing
-`session_log_restir_3_volumetric_probe_numerics.md`'s V-B finding #2 (the
-"inner-filter effect") as a genuine multi-point sweep rather than the
-2-point historical result the test suite doc itself flags as "thin evidence."
+"""Graphable sweep for G2: "optical-depth scaling sweep (naive bias vs.
+tau)" -- the "inner-filter effect," reconstructed as a genuine multi-point
+sweep rather than the thin 2-point result that first surfaced it.
 
 **Mechanism, identical to `test_t7_rankk_homogeneous_moderate_overlap.py`'s
 own reconstruction** (same toy, same `heterogeneous_lookup.py` machinery,
@@ -13,7 +11,7 @@ checked for a genuinely smooth/monotonic trend rather than three isolated
 points. Self-contained (no cross-import from `test_t7_...py`), per this
 repo's established no-cross-import-between-point-probe-files convention.
 
-**Historical shape** (session log, 2-point result): naive bias +12.7% at
+**Historical shape** (earlier 2-point result): naive bias +12.7% at
 `tau~O(1)` -> +29.5% at 3x thickness, "grows well past linear with path
 length." **This sweep's fresh parameters** (same species/mixture setup as
 T7, `L_scale` from 0 to 120): bias grows monotonically from ~0% (transparent

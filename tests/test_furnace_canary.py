@@ -2,9 +2,12 @@
 
 Covers the Neumann-series analytic reference (scalar isotropic-furnace
 reduction and the general matrix-operator case, cross-checked against the
-exact Fredholm solve per Inverse Paper 1's validation-fixture convention),
-plus the z-score and ESS helpers T3/T14/T22 lean on (session_log_restir_7's
-"first pass z=-16.96 looked biased, ESS~1.02/4 revealed why" pattern).
+exact Fredholm solve as a validation fixture), plus the z-score and ESS
+helpers T3/T14/T22 lean on -- the pattern those helpers exist to catch is a
+biased-looking z-score that turns out to be a low-ESS artifact rather than
+a real bug (a first-pass run once looked like z=-16.96 bias, but ESS~1.02/4
+revealed the reservoir had effectively collapsed to one sample, not that the
+estimator was wrong).
 """
 
 import sys

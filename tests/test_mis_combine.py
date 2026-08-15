@@ -107,7 +107,7 @@ def test_nonexistent_shift_drops_source_entirely():
 
     # only r_a could ever stream into dest_index=0 -- deterministic outcome
     assert combined.y == 7
-    assert combined.M == 1  # combine output's M is always pinned to 1 (session_log_restir_14)
+    assert combined.M == 1  # combine output's M is always pinned to 1
     assert combined.confidence == r_a.confidence  # r_b contributed zero confidence, not just zero weight
 
 

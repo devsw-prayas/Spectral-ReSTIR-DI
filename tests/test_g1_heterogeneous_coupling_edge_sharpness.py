@@ -1,9 +1,8 @@
-"""Graphable sweep for G1 (`forward_paper1_test_suite.md`'s G-tier table:
-"Heterogeneous coupling vs. edge sharpness w, bounded-as-w->0"), reconstructing
-`session_log_restir_3_volumetric_probe_numerics.md` section 4 (V-D, "the open
-question, resolved: no singular lever-arm analog").
+"""Graphable sweep for G1: "Heterogeneous coupling vs. edge sharpness w,
+bounded-as-w->0" -- does the value stay bounded as the edge gets
+arbitrarily sharp, or does it blow up?
 
-**Question this answers (Session 2's open item):** does heterogeneous-medium
+**Question this answers:** does heterogeneous-medium
 species coupling have a volumetric analog of the SURFACE Woodbury/TIR
 "lever-arm" effect -- a boundary-crossing SINGULARITY that blows up as some
 sharpness parameter `w` shrinks to zero? The surface effect was powered by a
