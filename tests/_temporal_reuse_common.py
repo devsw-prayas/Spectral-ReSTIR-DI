@@ -1,13 +1,12 @@
 """Shared scene-building helpers for the T17-T20 temporal-reuse point-probes.
 
 Not a test file itself (no `test_` prefix) -- continuous rank-1 fluorophore
-family (`p_hat(lambda') = a(lambda')*L_e(lambda')*G`), matching
-`session_log_restir_9b_temporal_tier4_coverage_lemma.md`'s own model
-convention. Kept deliberately separate from `test_temporal_history.py`'s
-discrete 3-item toy: that file exercises module 7's own API surface
-directly (module-level unit tests), these T-item files reconstruct the
-specific historical Test 1/2/3a/3c numeric probes with a continuous
-spectral target, same split as `_spatial_reuse_common.py` vs. T2/T6/T12-T14.
+family (`p_hat(lambda') = a(lambda')*L_e(lambda')*G`). Kept deliberately
+separate from `test_temporal_history.py`'s discrete 3-item toy: that file
+exercises module 7's own API surface directly (module-level unit tests),
+these T-item files instead probe specific numeric scenarios with a
+continuous spectral target, same split as `_spatial_reuse_common.py` vs.
+T2/T6/T12-T14.
 """
 
 import sys

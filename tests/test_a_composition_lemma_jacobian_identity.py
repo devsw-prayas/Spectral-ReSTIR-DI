@@ -1,7 +1,6 @@
-"""Symbolic (SymPy) proof for the composition-lemma A-item's core identity
-(`addendum_session11_13_test_plan_extension.md` section 1, "A-item (unnumbered),
-composition lemma"; proposed placement directly after A10v in
-`restir_running_notes.md`).
+"""Symbolic (SymPy) proof for the composition lemma's core identity: the
+reconnection Jacobian at one shading-point pair exactly rescales the
+point-light geometric term from one endpoint to the other.
 
 T27 (`test_t27_composition_lemma_real_jacobian.py`) checked the identity
 

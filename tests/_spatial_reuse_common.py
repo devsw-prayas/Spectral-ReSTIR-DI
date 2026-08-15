@@ -2,10 +2,9 @@
 
 Not a test file itself (no `test_` prefix, not meant to run standalone) --
 the 5-pixel fluorescent-surface neighborhood shared across T2 (well-matched),
-T3 (support-mismatch stress test), and T4 (elastic baseline), following
-`session_log_restir_7_tier4_spatial_reuse_probes.md`. T5 (dispersive hard
-cutoff) builds its own thresholds on top of this same grid/light but keeps
-its own module.
+T3 (support-mismatch stress test), and T4 (elastic baseline). T5 (dispersive
+hard cutoff) builds its own thresholds on top of this same grid/light but
+keeps its own module.
 """
 
 import sys

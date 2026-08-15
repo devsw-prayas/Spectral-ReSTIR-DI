@@ -4,20 +4,19 @@ generalized MIS weight `m_i` collapses exactly to the plain confidence share
 and every pairwise shift between them is identity (T27's family: T17/T21/T22's
 own shared-single-eval-target temporal setup, and T32's spatial analog).
 
-`project_infra_checkpoint.md`'s own T22 entry says this was previously "only
-derived by hand" -- confirmed as an exact equality by a dedicated MC-adjacent
-test (`test_balance_heuristic_collapses_to_confidence_share_under_shared_target`
-in `test_t22_volumetric_temporal_cgen_sweep_rb.py`), but that check exercises
-the real `src/mis_combine.py` code at concrete floating-point values, not a
-proof that the collapse holds for arbitrary confidences / arbitrary N / an
+A dedicated MC-adjacent test
+(`test_balance_heuristic_collapses_to_confidence_share_under_shared_target`
+in `test_t22_volumetric_temporal_cgen_sweep_rb.py`) already confirms this
+collapse as an exact equality, but that check exercises the real
+`src/mis_combine.py` code at concrete floating-point values, not a proof
+that the collapse holds for arbitrary confidences / arbitrary N / an
 arbitrary (nonzero) shared target value. This file supplies that proof, then
 cross-checks it directly against the actual `balance_heuristic_weight`
-implementation at concrete values as a implementation-matches-derivation
+implementation at concrete values as an implementation-matches-derivation
 sanity anchor (not a re-derivation of the proof itself).
 
-**The algebra** (`restir_running_notes.md` section 9, A8's formula, specialized
-to identity shifts J=1 and one shared `target_pdf_fn`, `p_hat_j = p_hat` for
-every j):
+**The algebra** (the generalized MIS weight formula, specialized to identity
+shifts J=1 and one shared `target_pdf_fn`, `p_hat_j = p_hat` for every j):
 
     m_i(y) = c_i * p_hat(y) / Sum_j [c_j * p_hat(y)]
            = c_i * p_hat(y) / [p_hat(y) * Sum_j c_j]

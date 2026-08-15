@@ -1,6 +1,6 @@
-"""Symbolic (SymPy) proof of T29's multi-hop chaining claim
-(`restir_running_notes.md` section 16, composition lemma; test suite entry
-"T29 | Multi-hop chaining stability, T=1-500 hops"):
+"""Symbolic (SymPy) proof of T29's multi-hop chaining claim (composition
+lemma: does the single-hop reprojection-Jacobian identity survive being
+chained across many hops?).
 `test_t29_multihop_chaining_stability.py` confirms only that a T-hop
 SEQUENTIALLY-CHAINED Jacobian-ratio product matches a DIRECT single-shot
 ratio at machine precision (~1e-15), for concrete T in {10,...,500} and
