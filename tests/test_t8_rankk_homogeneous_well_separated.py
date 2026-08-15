@@ -1,5 +1,5 @@
-"""Point-probe for T8 (session_log_restir_3 V-B, well-separated: rank-2
-homogeneous trichotomy, "silent support collapse").
+"""Point-probe for T8 (well-separated: rank-2 homogeneous trichotomy,
+"silent support collapse").
 
 Historical V-B, well-separated mixtures ([1,0] -> [0,1]): naive lands
 near-zero error "by cancellation" (a trap, not correctness), while
@@ -18,8 +18,7 @@ species/light bands and inner-filter-free target as T7
 extreme concentration gradient (species 0 confined to z~0, species 1 to
 z~1) so context A (z_A=0) and context B (z_B=1) are essentially pure single
 species with opposite identity -- reconstructed, not the historical exact
-numbers (session_log_restir_3.md sec 0 already flags its own parameters as
-non-recoverable).
+numbers (the original parameters were already flagged as non-recoverable).
 """
 
 import sys

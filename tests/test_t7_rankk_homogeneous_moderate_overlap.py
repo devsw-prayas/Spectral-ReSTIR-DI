@@ -1,5 +1,5 @@
-"""Point-probe for T7 (session_log_restir_3 V-B, moderate overlap: rank-2
-homogeneous trichotomy, "inner-filter bias mechanism").
+"""Point-probe for T7 (moderate overlap: rank-2 homogeneous trichotomy,
+"inner-filter bias mechanism").
 
 Historical V-B: candidates (species j ~ categorical(w_j^A), lambda' ~
 N(mu_j^A, sigma_j^A)) generated under vertex-context A, reused at vertex
@@ -10,9 +10,9 @@ carried entirely by DIFFERENTIAL TRANSMITTANCE between the species'
 absorption bands -- exactly zero in the transparent-medium limit, and
 grows with optical depth (+12.7% at tau~O(1) -> +29.5% at 3x thickness).
 
-This probe reconstructs that mechanism exactly (fresh concrete parameters,
-per the session log's own "band parameters are reconstructed comparables,
-not mirrors" note -- session_log_restir_3.md sec 0), using
+This probe reconstructs that mechanism exactly (fresh concrete parameters --
+the historical band parameters were themselves flagged as reconstructed
+comparables, not mirrors, so there is no bit-exact target to replay), using
 `heterogeneous_lookup.py` (module 6) at exact-quadrature precision (no MC,
 same discipline as that module's own test file): two always-positive,
 oppositely-graded species concentration profiles (homogeneous in the sense

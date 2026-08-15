@@ -1,5 +1,5 @@
-"""Point-probe for T4 (session_log_restir_7 "Test 2": elastic-only vertex,
-Tier-0 baseline sanity check).
+"""Point-probe for T4 ("Test 2": elastic-only vertex, Tier-0 baseline
+sanity check).
 
 Same 5-pixel neighborhood as T2, but purely elastic (`K_e` diagonal -- no
 fluorescence at all): per-pixel reflectance curves `R_i(lambda)` with mild,

@@ -1,6 +1,5 @@
-"""Point-probe for T5 (session_log_restir_7 "Test 3": dispersive hard
-TIR-cutoff, bug found and resolved -- the paper's key `mis_combine.py`
-motivating story).
+"""Point-probe for T5 ("Test 3": dispersive hard TIR-cutoff, bug found and
+resolved -- the paper's key `mis_combine.py` motivating story).
 
 Same 5-pixel neighborhood as T2/T4, but each pixel now carries a hard
 idealized transmission cutoff `T_i(lambda) = 1{lambda > lambda*_i}` (a
@@ -13,8 +12,8 @@ so shifts stay identity here and only the per-pixel target's hard window
 differs (this matches the historical Test 3's own framing: the dispersive
 element is the cutoff, not a cross-lambda reconnection).
 
-Historical trajectory (`session_log_restir_7_tier4_spatial_reuse_probes.md`
-sec 4, `mis_combine.py`'s own docstring): a naive "canonical" combine --
+Historical trajectory (see also `mis_combine.py`'s own docstring): a naive
+"canonical" combine --
 each source's confidence share `c_i/Sum_j c_j` used as its resampling
 weight, with NO reweighting by how well each reservoir's own target
 actually matches the destination's -- gave z=-170 at N=20,000, confirmed

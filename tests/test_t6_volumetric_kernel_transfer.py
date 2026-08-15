@@ -1,5 +1,5 @@
-"""Point-probe for T6 (session_log_restir_3 V-A: rank-1 volumetric
-harness-validation "kernel-transfer sanity check").
+"""Point-probe for T6 (rank-1 volumetric harness-validation "kernel-transfer
+sanity check").
 
 Historical V-A: a reservoir (winner lambda', RIS weight, M=8 uniform-
 proposal candidates, target a(lambda')*L_e(lambda')) generated at pixel A
@@ -11,9 +11,9 @@ target's spectral SHAPE has no sensor-side/context dependence at all (unlike
 the dispersive surface case), so verbatim cross-vertex reuse needs no
 reweighting beyond a per-vertex scalar. This probe reconstructs that
 qualitative result (unbiased at both ends) with fresh concrete parameters,
-not the exact historical numbers/seed -- session_log_restir_3 sec 0 already
-flags its own band parameters as reconstructed, not recovered, so there is
-no bit-exact target to replay.
+not the exact historical numbers/seed -- the original band parameters were
+already flagged as reconstructed, not recovered, so there is no bit-exact
+target to replay.
 
 Unlike T2-T5 (surface, hand-rolled `identity_shift`), this is the first
 point-probe to explicitly wire together module 2
