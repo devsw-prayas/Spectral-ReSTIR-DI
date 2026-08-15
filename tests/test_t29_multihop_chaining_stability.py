@@ -1,5 +1,4 @@
-"""Point-probe for T29 (session_log_restir_12.md section 4, "item 1 of the
-what-else-for-cross-frame list": multi-hop chaining stability).
+"""Point-probe for T29 (multi-hop chaining stability).
 
 Question: does the composition lemma (T26-T28: `J_total = J_reproj`,
 spectral part via detached fresh resampling) survive being CHAINED across

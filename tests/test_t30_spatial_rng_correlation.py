@@ -1,5 +1,4 @@
-"""Point-probe for T30 (session_log_restir_13.md section 1: spatial RNG
-correlation confirmation).
+"""Point-probe for T30 (spatial RNG correlation confirmation).
 
 Question: does the cross-frame RNG-correlation bias-floor pathology found
 for the TEMPORAL axis (T25 -- correlated draws across frames of one pixel)
@@ -26,8 +25,8 @@ index without proper hashing) -- the same failure class as T25/T33's
 Estimator: self-normalized `sum(w_i * x_i) / sum(w_i)` over the `M`
 neighbors, per trial; bias = mean estimate - `mu_true` over many trials.
 
-**Expected pattern (matches T25/session_log_restir_12's mechanism
-exactly, reconfirmed here on the spatial axis, not re-derived):**
+**Expected pattern (matches T25's mechanism exactly, reconfirmed here on
+the spatial axis, not re-derived):**
 - `rho=0`: bias shrinks substantially as `M` grows (ordinary finite-sample
   self-normalized-IS bias, `O(1/M)`-ish decay).
 - `rho>=0.5`: bias STALLS -- growing `M` from 32 to 128 barely moves it,

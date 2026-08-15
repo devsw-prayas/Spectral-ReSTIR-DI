@@ -1,5 +1,5 @@
-"""Point-probe for T28 (session_log_restir_12.md section 1.3: composition
-lemma on a genuine 2D deforming surface, real area Jacobian).
+"""Point-probe for T28 (composition lemma on a genuine 2D deforming
+surface, real area Jacobian).
 
 T26 used an abstract 1D reprojection map; T27 used the real single-vertex
 point-light reconnection Jacobian but stayed 1D. T28 is the third and

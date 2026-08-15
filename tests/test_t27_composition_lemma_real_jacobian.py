@@ -1,6 +1,6 @@
-"""Point-probe for T27 (session_log_restir_12.md section 1.2: composition
-lemma validated against the exact Bitterli/Veach single-vertex reconnection
-Jacobian, not an abstract 1D reprojection map).
+"""Point-probe for T27 (composition lemma validated against the exact
+Bitterli/Veach single-vertex reconnection Jacobian, not an abstract 1D
+reprojection map).
 
 T26 validated the composition lemma with an abstract 1D deformation
 `phi(x)` and `J_reproj = phi'(x)`. T27 replaces the abstract map with the

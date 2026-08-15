@@ -1,5 +1,5 @@
-"""Point-probe for T2 (session_log_restir_7 "Test 1": fluorescent surface,
-well-matched spatial neighborhood).
+"""Point-probe for T2 ("Test 1": fluorescent surface, well-matched spatial
+neighborhood).
 
 5-pixel neighborhood, one area light `L_e(lambda)`, UNIFORM fluorophore
 `a(lambda)` across all pixels, only a per-pixel geometric factor `G_i`
@@ -9,8 +9,7 @@ light-importance-only NEE, `q(lambda') ~ L_e(lambda')`. Combine:
 `mis_combine.combine_reservoirs` (module 4) with identity shifts everywhere
 -- support is full/matched here, so Tier 1's Jacobian~=1 result and Tier
 2's support-coverage corollary both hold trivially (this is exactly the
-case `session_log_restir_7` sec 5 notes both the naive and corrected combine
-formulas agree on).
+case where the naive and corrected combine formulas agree).
 
 Historical result: z=+1.23, ~5x variance reduction vs. no-reuse baseline.
 This probe checks the qualitative shape of that result (unbiased, and a
