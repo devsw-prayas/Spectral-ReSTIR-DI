@@ -1,19 +1,19 @@
-"""Point-probe for T23 (M-clamping, input-clamp fix vs. broken output-clamp
--- addendum_volumetric_temporal_mclamping.md §10, steady-state half).
+"""Point-probe for T23 (M-clamping, input-clamp fix vs. broken output-clamp,
+steady-state half).
 
 First point-probe to actually *chain* `temporal_combine`'s own output back in
 as the next frame's history reservoir across many frames -- every prior
 T-item (T2/T6/T12-T22) feeds fresh reservoirs into a combine every trial,
-never its own prior output. That untested code path is exactly where
-session_log_restir_14 found a real bug: `Reservoir.M` was conflating the
-Talbot-normalization divisor `contribution_weight()` needs with GRIS's
-pooled confidence `M_r`, corrupting readouts the moment a combine's output
-became a source in a *later* combine call -- the addendum's own documented
-"broken output-clamp" symptom (§10: "clamping the *output* `M_new` after
-computing `wsum_combine` does not bound the accumulated weight"). This probe
-only became safe to write once `ris_reservoir.py`/`mis_combine.py` got the
-`M`/`confidence` split (see those modules' docstrings) -- it is the first
-exercise of that fix, not just a T-item copy.
+never its own prior output. That untested code path is exactly where a real
+bug was once found: `Reservoir.M` was conflating the normalization divisor
+`contribution_weight()` needs with the pooled confidence used for MIS,
+corrupting readouts the moment a combine's output became a source in a
+*later* combine call -- the documented "broken output-clamp" symptom:
+clamping the *output* `M_new` after computing `wsum_combine` does not bound
+the accumulated weight. This probe only became safe to write once
+`ris_reservoir.py`/`mis_combine.py` got the `M`/`confidence` split (see
+those modules' docstrings) -- it is the first exercise of that fix, not
+just a T-item copy.
 
 **Scoping note on "vs. broken output-clamp":** the broken-output-clamp
 failure mode was specifically a single-`M`-field conflation bug, now
@@ -21,13 +21,12 @@ eliminated by construction (there is no longer a single field that both
 `contribution_weight()`'s divisor and the MIS ratio read, so there is no
 longer a meaningful "clamp the wrong field after the fact" mistake left to
 reproduce as a parallel code path -- reproducing the pre-fix formula
-byte-for-byte here would just re-derive session_log_restir_14's own already-
-documented numbers, not add new coverage). What this probe actually verifies
-is the FIXED mechanism itself: `combine_reservoirs`'s `m_cap` clamps each
-source's confidence on the way IN (per `mis_combine.py`'s current docstring),
-and this stays unbiased at every cap level once chained across many frames --
-the property the addendum's fix was suppose to deliver and session 14 found
-it wasn't, pre-fix.
+byte-for-byte here would just re-derive an already-documented finding, not
+add new coverage). What this probe actually verifies is the FIXED mechanism
+itself: `combine_reservoirs`'s `m_cap` clamps each source's confidence on
+the way IN (per `mis_combine.py`'s current docstring), and this stays
+unbiased at every cap level once chained across many frames -- the property
+that fix was supposed to deliver and the pre-fix version didn't.
 
 Continuous rank-1 target family, same convention as T17-T20
 (`p_hat(lambda')=a(lambda')*L_e(lambda')*G`), M=8 candidates/reservoir.
@@ -100,7 +99,7 @@ def _stream_reservoir(target_fn, rng):
 def _run_chain(target_selector, n_frames, rng, m_cap):
     """Chain `temporal_combine` across `n_frames`, feeding each frame's
     combined output back in as the next frame's history reservoir -- the
-    exact multi-frame chaining path session_log_restir_14's bug lived in.
+    exact multi-frame chaining path the M/confidence-conflation bug lived in.
     Returns the per-frame `wsum` list (the unbiased per-frame estimator,
     per `temporal_history.py`'s own established convention)."""
     history = Reservoir()

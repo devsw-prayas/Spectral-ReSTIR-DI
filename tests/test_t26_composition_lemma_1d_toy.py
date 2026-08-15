@@ -1,14 +1,12 @@
-"""Point-probe for T26 (session_log_restir_12.md section 1.1 / addendum
-session 11-13's composition-lemma test-plan entry: composition lemma, 1D
-toy reprojection).
+"""Point-probe for T26 (composition lemma, 1D toy reprojection).
 
 Claim under test: for temporal reuse under moving/deforming geometry, the
 total shift Jacobian factors as `J_total = J_reproj` (pure geometric
 reprojection), with the spectral degree of freedom handled entirely outside
 the Jacobian via detached (fresh) resampling at the destination -- never
 folded in as a multiplicative spectral-Jacobian factor, and never skippable.
-This composition lemma is NOT yet formalized in `restir_running_notes.md`
-or built into `shift_maps.py`/`temporal_history.py` (both of which are
+This composition lemma is NOT yet built into
+`shift_maps.py`/`temporal_history.py` (both of which are
 locked to `reproject`-is-identity, static-geometry v1 scope) -- like T1
 (rank-k reconnection), this is a standalone toy reconstruction with fresh
 concrete parameters, not literal replay of the historical session's exact

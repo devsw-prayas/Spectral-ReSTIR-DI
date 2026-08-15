@@ -1,28 +1,26 @@
-"""Point-probe for T24 (M-clamping step-change recovery --
-addendum_volumetric_temporal_mclamping.md §10, step-change half).
+"""Point-probe for T24 (M-clamping step-change recovery).
 
 Companion to T23 (`test_t23_mclamp_input_clamp_steady_state.py`, steady-state
 half) -- same multi-frame `temporal_combine` chaining harness, same
-continuous rank-1 target family, same M/confidence-split precondition
-(session_log_restir_14). Target center jumps 2*sigma mid-sequence.
+continuous rank-1 target family, same M/confidence-split precondition.
+Target center jumps 2*sigma mid-sequence.
 
 **Reconstructing this probe surfaced a genuinely new, stronger finding than
-the addendum's own framing, worth stating explicitly:** this repo's
+an earlier probe's own framing, worth stating explicitly:** this repo's
 `temporal_combine` (a shared-eval-target, two-reservoir confidence-weighted
 combine) is the exact family T22 proved `E[h(y)*W]=quadrature_truth(h)` for
 EXACTLY, independent of a reservoir's own `p_hat_gen`, as long as
 `p_hat_gen>0` wherever `h` has support -- and a smooth, full-support Gaussian
 target shift never violates that precondition. A first draft of this test
-assumed the addendum's own step-change table ("uncapped still shows -4.6%
-bias 74 frames after the shift") meant a genuine per-frame MEAN bias and
-asserted a hard rel.err threshold right at the shift frame; it failed. A
-direct z-test on the same data showed the "bias" was within ~1.4 sigma of
-zero given the sample's own (very large) standard deviation -- i.e. exactly
-the heavy-tailed-variance-not-bias trap T22's own module-checkpoint memory
-already flags. Likely explanation: the addendum predates
-session_log_restir_14's M/confidence fix, so its own step-change numbers may
-have been produced under the same chaining bug that session found -- not
-re-checked here, since the addendum file itself is out of scope to re-derive.
+assumed an earlier step-change table ("uncapped still shows -4.6% bias 74
+frames after the shift") meant a genuine per-frame MEAN bias and asserted a
+hard rel.err threshold right at the shift frame; it failed. A direct z-test
+on the same data showed the "bias" was within ~1.4 sigma of zero given the
+sample's own (very large) standard deviation -- i.e. exactly the
+heavy-tailed-variance-not-bias trap T22 also flags. Likely explanation: that
+earlier table predates the M/confidence-conflation fix, so its own
+step-change numbers may have been produced under the same chaining bug --
+not re-checked here, since the original source is out of scope to re-derive.
 
 **What this probe actually checks, confirmed empirically before writing the
 assertions below:**

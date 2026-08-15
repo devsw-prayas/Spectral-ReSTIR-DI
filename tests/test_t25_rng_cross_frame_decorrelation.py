@@ -1,13 +1,13 @@
-"""Point-probe for T25 (`forward_paper1_test_suite.md`: cross-frame RNG
-correlation check -- does the production Philox/PCG32 keying scheme
-decorrelate a pixel's current-frame draws from its own history reservoir's
-draws). No A-item backs this: the gap was named in Session 9 planning and
-never probed until module 8 (`pcg32_rng.py`) landed.
+"""Point-probe for T25 (cross-frame RNG correlation check -- does the
+production Philox/PCG32 keying scheme decorrelate a pixel's current-frame
+draws from its own history reservoir's draws). No A-item backs this: the
+gap was named in early planning and never probed until module 8
+(`pcg32_rng.py`) landed.
 
 This is a DELIBERATE duplicate/promotion, not new coverage: module 8's own
 `tests/test_pcg32_rng.py::test_t25_cross_frame_draws_are_uncorrelated`
 already implements this exact mechanism and was treated as satisfying T25
-at module-landing time (see `.claude/memory` project checkpoint). Every
+at module-landing time. Every
 other T-item gets its own dedicated `tests/test_t<N>_*.py` file per the
 suite table's ID convention, so this file exists to give T25 the same
 standalone home -- same computation, rewritten with this repo's `torch`

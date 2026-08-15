@@ -1,5 +1,5 @@
-"""Point-probe for T22 (session_log_restir_10_volumetric_temporal_threshold's
-Test 1 + Test 3: volumetric temporal C_gen sweep + Rao-Blackwell re-check).
+"""Point-probe for T22 (Test 1 + Test 3: volumetric temporal C_gen sweep +
+Rao-Blackwell re-check).
 
 Direct follow-on to T21 (clean `C_hist==C_cur` baseline). Here the history
 reservoir is streamed under a MISMATCHED optical depth `C_gen`, while the
@@ -7,12 +7,10 @@ eval-time target fed to `temporal_combine`/`combine_reservoirs` always uses
 `C_eval=1.0` -- exactly the gen/eval split `Reservoir.p_hat_gen` exists to
 support (A9).
 
-**Why this test does NOT chase a bias cutoff** (superseding
-`addendum_volumetric_temporal_mclamping.md`'s VTest 2 read): the actual
-follow-up session (`session_log_restir_10_volumetric_temporal_threshold.md`
-sec 4) traced that addendum's -45%-at-C_gen=150 finding to a NAIVE
-destination-only combine, not the corrected balance-heuristic combine this
-repo's `temporal_history.temporal_combine`/`mis_combine.combine_reservoirs`
+**Why this test does NOT chase a bias cutoff**: an earlier finding of -45%
+bias at C_gen=150 was traced to a NAIVE destination-only combine, not the
+corrected balance-heuristic combine this repo's
+`temporal_history.temporal_combine`/`mis_combine.combine_reservoirs`
 implements. There is in fact a clean, exact, closed-form reason the
 corrected combine cannot be biased here: with a single shared eval target
 for current+history (identity shift, static geometry), the balance-heuristic
@@ -24,13 +22,13 @@ for any `h`, independent of the reservoir's own generation target `p_hat_gen`
 condition, always true here since transmittance is never exactly zero at
 finite `C_gen`). So bias truly cannot appear at any finite `C_gen`.
 
-**What this repo's own numbers add past session_10's**: raw single-pick MC
+**A practical wrinkle worth flagging**: raw single-pick MC
 (`temporal_combine`, one reservoir draw per trial) becomes numerically
 IMPRACTICAL well before `C_gen=150` in this probe's specific Gaussian
 parameterization -- verified by hand that even N=200,000 trials leaves the
 observed sample mean ~35% off at `C_gen=30` (heavy-tailed / high-variance,
-not biased -- exactly the addendum's own flagged "not-finite-variance"
-character, worse here than in session_10's own scale). Rather than fight
+not biased -- a "not-finite-variance" character similar to, but worse than,
+an earlier probe's own scale at this same extreme). Rather than fight
 that convergence with brute-force N (impractical for a test file), this
 probe uses a Rao-Blackwellized estimator (T3's technique: average each
 reservoir's M raw candidate draws' own single-candidate MIS contribution
@@ -81,7 +79,7 @@ torch.set_default_dtype(torch.float64)
 L_E = light_spectrum()
 A = gaussian(560.0, 50.0)
 G = 1.3
-C_EVAL = 1.0  # current frame's actual optical depth (fixed, matches session_10)
+C_EVAL = 1.0  # current frame's actual optical depth (fixed)
 
 MASS = candidate_mass(L_E)
 P_GEN = gen_density(L_E)
@@ -174,8 +172,8 @@ def test_corrected_combine_stays_unbiased_at_modest_cgen_mismatch():
 
 
 def test_ess_hist_over_m_decays_as_cgen_grows():
-    """Diagnostic tracked in session_10 in place of a bias cutoff: variance
-    risk (not bias) is what actually grows with C_gen mismatch."""
+    """Diagnostic tracked in place of a bias cutoff: variance risk (not
+    bias) is what actually grows with C_gen mismatch."""
     rng = torch.Generator().manual_seed(2300)
     ess_ratios = []
     for c_gen in (1.0, 10.0, 30.0, 70.0, 150.0):
@@ -209,7 +207,7 @@ def _rb_contribution(index, draws, reservoirs):
 
 
 def test_rao_blackwell_confirms_unbiased_at_extreme_cgen_mismatch():
-    """Mirrors session_10 Test 3 at the worst tested points -- confirms the
+    """Mirrors an earlier probe's Test 3 at the worst tested points -- confirms the
     combine stays formally unbiased even at 30x-150x optical-depth mismatch,
     where a raw single-pick MC estimate (previous test's structure) would
     need an impractically large N to converge (heavy-tailed, per the
