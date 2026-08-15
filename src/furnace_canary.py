@@ -4,15 +4,14 @@ Analytic reference for V-tier real-tracer verification, and for T-tier
 z-score/ESS/Rao-Blackwell checks (T3, T14, T22).
 Depends on: heterogeneous_lookup (module 6), temporal_history (module 7).
 
-The furnace test + closed-form Neumann reference is "shared wholesale" from
-Inverse Paper 1 (`session_log_restir_1_planning.md` sec 0) -- this mirrors
-that repo's `forward.py` (`neumann_forward`/`fredholm_solve_exact`)
-one-for-one: `L = L_e + T@L_e + T^2@L_e + ...` truncated to a bounce depth,
-generalized here to accept either a full transport operator (square tensor,
-matches the sibling repo's spectral case) or a scalar reflectance `rho`
-(the literal furnace-canary reduction, where every point sees the same
-isotropic environment and the series collapses to a scalar geometric sum,
-closed form `L_e/(1-rho)`).
+A furnace-canary scene is the standard renderer sanity check: every point
+sees the same isotropic environment, so light transport reduces to a scalar
+geometric series with a known closed form, `L_e/(1-rho)`. This module
+computes that reference two ways -- a truncated Neumann series,
+`L = L_e + T@L_e + T^2@L_e + ...` summed to a bounce depth, and the exact
+infinite-bounce solve -- and accepts either a full transport operator
+(square tensor, for scenes with per-wavelength coupling) or a scalar
+reflectance `rho` (the plain isotropic-furnace case).
 """
 
 import torch
@@ -44,9 +43,9 @@ def neumann_series_reference(scene, order: int, tol: float):
 def fredholm_solve_exact(scene):
     """Exact infinite-bounce solve `(I - T) L = L_e` -- validation fixture only.
 
-    Mirrors Inverse Paper 1's `fredholm_solve_exact`: used to confirm a
-    scene's spectral radius < 1 (series convergent) and cross-check
-    `neumann_series_reference` at high `order`, not as the estimator itself.
+    Used to confirm a scene's spectral radius < 1 (the series converges) and
+    to cross-check `neumann_series_reference` at high `order`; not meant to
+    stand in as the Monte Carlo estimator itself.
     """
     T = torch.as_tensor(scene.T)
     L_e = torch.as_tensor(scene.L_e)

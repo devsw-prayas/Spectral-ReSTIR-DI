@@ -1,9 +1,12 @@
 """Heterogeneous local-lookup — checklist module 6.
 
-Reuse-consistency machinery for A6's proved trichotomy
-(restir_running_notes.md §7): a candidate y=(j, lambda') generated at vertex
-z_A, reused (scored) at vertex z_B != z_A, for a rank-k fluorescent species
-mixture with per-species concentration field c_j(z).
+Reuse-consistency machinery for a candidate y=(j, lambda') generated at
+vertex z_A, reused (scored) at vertex z_B != z_A, for a rank-k fluorescent
+species mixture with per-species concentration field c_j(z). Three ways to
+handle that reuse are possible (naive score, importance-reweighted score,
+or a fresh fix-local resample), and this module implements the trichotomy of
+which ones are unbiased and under what conditions -- see the strategy list
+below.
 
 Target at a fixed vertex z: `p_hat(y;z) = c_j(z)*e_j(lambda_s)*a_j(lambda')*L_e(lambda')`,
 optionally carrying a joint z/lambda' transmittance factor (e.g.

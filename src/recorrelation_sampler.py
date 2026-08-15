@@ -1,21 +1,21 @@
 """Recorrelation lemma sampler — checklist module 2.
 
-Tier-0 item 3 (restir_running_notes.md §1): for a rank-1 fluorescent kernel
-`K_x(lambda, lambda') = e(lambda) * a(lambda')` (excitation-emission
-separable), the conditional re-emission density is
+For a rank-1 fluorescent kernel `K_x(lambda, lambda') = e(lambda) * a(lambda')`
+(excitation-emission separable), the conditional re-emission density is
 
     p(lambda | lambda') = e(lambda) a(lambda') / [a(lambda') * integral(e)]
                          = e(lambda) / integral(e)
 
-— exactly independent of `lambda'`, not just in expectation. This is the
-result A1/A2's reconnection-validity theorem cites for why fluorescent
-vertices are exact (not approximate) reconnection points.
+— exactly independent of `lambda'`, not just in expectation. This is why
+fluorescent vertices can be treated as exact (not approximate) reconnection
+points elsewhere in this package: the reconnection-validity theorem needs
+`p(y|lambda)` independent of `lambda`, and this identity delivers that
+independence exactly, by construction, rather than as an approximation.
 
 Also provides the product-CDF joint importance resampler for
-`a(lambda') * L_e(lambda') * G` — promoted here from Inverse Paper 1's primal
-sampler role to this paper's actual RIS target (see restir_running_notes.md
-§0, "Core contribution"). That target feeds `Reservoir` (module 1) when
-resampling the excitation wavelength lambda'.
+`a(lambda') * L_e(lambda') * G`, this paper's actual RIS target. That target
+feeds `Reservoir` (module 1) when resampling the excitation wavelength
+lambda'.
 
 Depends on: ris_reservoir (module 1), spectral_grid (Tier 0).
 """

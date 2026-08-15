@@ -25,12 +25,11 @@ ordinal slot the way a progressive caller would (`frame_index` and
     global_ordinal = frame_index * 65536 + sample_index
     seed_value     = pixel_id * 1973 + global_ordinal * 9277 + 1
 
-This is exactly the gap T25/V12 probe: the production formula was never
-designed with a reservoir's history persisting *across* frames in mind, so
-whether this keying scheme actually decorrelates a pixel's current-frame
-draws from its own history reservoir's draws is an open empirical question,
-not a foregone-conclusion pass -- see `restir_running_notes.md` sec 14 and
-`forward_paper1_test_suite.md`'s T25 entry.
+The production formula was never designed with a reservoir's history
+persisting *across* frames in mind, so whether this keying scheme actually
+decorrelates a pixel's current-frame draws from its own history reservoir's
+draws is an open empirical question, not a foregone-conclusion pass -- the
+tests in this repo exist specifically to check it, not to assume it.
 """
 
 MASK64 = (1 << 64) - 1

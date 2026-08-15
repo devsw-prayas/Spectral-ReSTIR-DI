@@ -4,37 +4,41 @@ Streaming weighted reservoir sampling (WRS) and the two-reservoir combine
 primitive (Bitterli et al. 2020, streaming RIS). Unblocks nearly every
 T-item; every other module in this package builds on `Reservoir`.
 
-Notation locked in restir_running_notes.md ("Notation locked" section):
+Field notation used throughout this module:
     y            — reservoir's currently held candidate sample
     wsum         — running sum of resampling weights w_i = p_hat(x_i)/p_gen(x_i)
-    M            — RAW streamed-candidate count. Stays the Talbot-
-                   normalization divisor `contribution_weight()` uses
-                   (`wsum/(M*p_hat_gen)`) and is always 1 on a
-                   `mis_combine.combine_reservoirs` output, since that
-                   output's `wsum` is already the fully-shaded
-                   `p_hat(y)*W` value (Bitterli's `Sum_j w_j`), not a
-                   raw multi-candidate sum needing an `/M` division.
-    confidence   — GRIS's pooled/capped confidence `M_r` (c_i under
-                   M-clamping), the count `mis_combine.balance_heuristic_weight`
-                   reads for its MIS ratio. Mirrors `M` for a raw streamed
-                   reservoir (every accepted `update`/`merge` call keeps
-                   them equal); a combine's output instead sets `M=1` and
-                   `confidence` to the pooled, `m_cap`-clamped source
-                   count — session_log_restir_14's fix for the two
-                   incompatible roles `M` used to serve alone (see that
-                   log for the full derivation and the GRIS §6.2 cross-
-                   check that motivated the split).
+    M            — RAW streamed-candidate count. This is the divisor
+                   `contribution_weight()` uses (`wsum/(M*p_hat_gen)`), and
+                   it is always 1 on a `mis_combine.combine_reservoirs`
+                   output, because that output's `wsum` is already the
+                   fully-shaded `p_hat(y)*W` value, not a raw multi-candidate
+                   sum that still needs dividing by a candidate count.
+    confidence   — pooled/capped confidence (c_i under M-clamping), the
+                   count `mis_combine.balance_heuristic_weight` reads for its
+                   MIS ratio. Mirrors `M` for a raw streamed reservoir (every
+                   accepted `update`/`merge` call keeps them equal); a
+                   combine's output instead sets `M=1` and `confidence` to
+                   the pooled, `m_cap`-clamped source count. `M` and
+                   `confidence` had to be split into two fields because they
+                   serve two genuinely different roles once combines chain
+                   across frames -- one raw candidate count for the current
+                   reservoir's own normalization, one pooled/capped count for
+                   the next combine's MIS ratio -- and a single shared field
+                   can't hold both correctly at once.
     p_hat_gen    — target p_hat evaluated at GENERATION time for `y`,
                    tracked separately from any later re-evaluation ("eval")
-                   to support the Coverage Lemma's gen/eval split (A9)
+                   so a combine can weight a reservoir by what its candidate
+                   looked like when it was drawn, not by how it scores under
+                   a target that has since moved on
     W            — unbiased RIS contribution weight,
                    W = wsum / (M * p_hat_gen(y))
 
 Full multi-reservoir MIS (balance-heuristic weights `m_i(y)` across
-reservoirs with *different* local targets, A8) lives in mis_combine.py —
-deliberately not inlined here, since T5's bug was exactly this logic folded
-into the wrong place. `Reservoir.merge` below is the MIS-free two-way
-combine (single shared target, A1/A2 reconnection-valid case) that
+reservoirs with *different* local targets) lives in mis_combine.py —
+deliberately not inlined here: a real bug once lived in exactly this logic
+when it was folded into reservoir-merge code, and separating it out is what
+made that bug provable and fixable. `Reservoir.merge` below is the MIS-free
+two-way combine (single shared target, identity-shift case) that
 mis_combine.py calls once per term with the real m_i weight in place of the
 plain M it uses on its own.
 """

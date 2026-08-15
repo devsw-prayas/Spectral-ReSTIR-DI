@@ -1,12 +1,12 @@
 """Shift maps T_{lambda_A -> lambda_B} — checklist module 3.
 
-Reconnection-validity machinery for A1 (surface, restir_running_notes.md §2)
-and A2 (volumetric, §3). The theorem: T≡id, J≡1 is valid **iff** p(y|lambda)
+Reconnection-validity machinery, surface and volumetric. The theorem this
+module implements: the identity shift (T≡id, J≡1) is valid **iff** p(y|lambda)
 is literally independent of lambda (support included, not just in
 expectation).
 
 Per-vertex classification (locked v1 scope: elastic + rank-1 fluorescent
-surface, rank-1 fluorescent volumetric — see restir_running_notes.md §0):
+surface, rank-1 fluorescent volumetric):
     diffuse      — trivial, Y_lambda == Y for every lambda
     thin_film    — trivial, kernel re-evaluation only, not a measure change
     fluorescent  — trivial AND stronger: zero statistical dependence via the
@@ -18,12 +18,12 @@ surface, rank-1 fluorescent volumetric — see restir_running_notes.md §0):
                    existence failure no Jacobian repairs (forces fallback to
                    collapse+MIS upstream, not handled in this module).
 
-Volumetric (A2) locked scope: isotropic/HG/Rayleigh phase functions (angular
-shape lambda-independent) + rank-1 fluorescent scattering satisfy both of
-A2's premises unconditionally, so the volumetric shift is always identity.
-sigma_t(lambda)'s position-dependence is firewalled to the free-path sampler
-(module 5), which runs *before* the reservoir is touched (A2's
-position-sampling firewall scope lemma) — never a shift-map concern.
+Volumetric locked scope: isotropic/HG/Rayleigh phase functions (angular
+shape lambda-independent) + rank-1 fluorescent scattering satisfy the
+volumetric theorem's premises unconditionally, so the volumetric shift is
+always identity. sigma_t(lambda)'s position-dependence is firewalled to the
+free-path sampler (module 5), which runs *before* the reservoir is touched —
+never a shift-map concern.
 
 Depends on: ris_reservoir (module 1), snell_jacobian / cauchy_ior (Tier 0).
 """

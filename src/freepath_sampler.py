@@ -1,21 +1,20 @@
 """Volumetric free-path sampler (delta-tracking stand-in) — checklist module 5.
 
-Covers A7 (free-path firewall corollary, restir_running_notes.md §8): if
-z_A, z_B are themselves random (real lambda-coupled free-path process), the
-fix-local reuse result from A6 part 3 holds unconditionally regardless of
-z's distribution (tower property) — no property of THIS module's sampler
-matters for that proof, only that it produces an unbiased free path at all.
-`sample_free_path`'s correctness is exactly the thing V-E-1-style harness
-tests (T15) check before trusting cross-pixel reuse tests (T16) built on it.
+Covers the free-path firewall corollary: even if z_A, z_B are themselves
+random (a real lambda-coupled free-path process), the fix-local reuse
+result (a fresh resample at the destination vertex is always unbiased) holds
+unconditionally regardless of z's distribution, by the probability tower
+property -- no property of THIS module's sampler matters for that proof,
+only that it produces an unbiased free path at all. `sample_free_path`'s
+correctness is a prerequisite for trusting any cross-pixel reuse built on
+top of it.
 
-**Position-sampling firewall (A2 scope lemma):** sigma_t(lambda)-driven
-position sampling must stay confined to this module and run *before* any
-reservoir is touched — never leaked into `ris_reservoir.py` or
-`shift_maps.py`.
+**Position-sampling firewall:** sigma_t(lambda)-driven position sampling
+must stay confined to this module and run *before* any reservoir is
+touched — never leaked into `ris_reservoir.py` or `shift_maps.py`.
 
-1D domain convention (matches the toy-probe family in session_log_restir_2
-through _4): z is a scalar position; `sigma_t_fn(z)` bakes in whatever
-wavelength context is relevant to the caller (this module is
+1D domain convention: z is a scalar position; `sigma_t_fn(z)` bakes in
+whatever wavelength context is relevant to the caller (this module is
 wavelength-agnostic by design — the lambda-coupling lives entirely in the
 `sigma_t_fn` closure the caller provides).
 
