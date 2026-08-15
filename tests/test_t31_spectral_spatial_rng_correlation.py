@@ -1,6 +1,5 @@
-"""Point-probe for T31 (`addendum_session11_13_test_plan_extension.md`
-section "T31 -- spectral x spatial RNG correlation, fills the last cell of
-the original 2x2"): does the RNG bias-floor pathology (T25 temporal,
+"""Point-probe for T31 (spectral x spatial RNG correlation, fills the last
+cell of the original 2x2): does the RNG bias-floor pathology (T25 temporal,
 T30 spatial, both on the GEOMETRIC stream) also hit the SPECTRAL stream
 pooled across spatial neighbors?
 

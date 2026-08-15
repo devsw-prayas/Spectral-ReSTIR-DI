@@ -1,6 +1,5 @@
-"""Point-probe for T33 (`addendum_session11_13_test_plan_extension.md`
-section "T33 -- compound spatiotemporal RNG, geometric stream: real seeding
-schemes, and the joint-index-collision finding"):
+"""Point-probe for T33 (compound spatiotemporal RNG, geometric stream: real
+seeding schemes, and the joint-index-collision finding):
 
 **What this supersedes:** an earlier pass at this question (retired, not
 reconstructed here) modeled correlation via an idealized two-factor

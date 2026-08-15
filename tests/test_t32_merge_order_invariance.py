@@ -1,5 +1,4 @@
-"""Point-probe for T32 (`addendum_session11_13_test_plan_extension.md`
-section "T32 -- compound spatiotemporal, merge-order invariance"):
+"""Point-probe for T32 (compound spatiotemporal, merge-order invariance):
 
 Question: does it matter whether reservoir combine happens
 temporal-then-spatial, spatial-then-temporal, or as one flat joint pool

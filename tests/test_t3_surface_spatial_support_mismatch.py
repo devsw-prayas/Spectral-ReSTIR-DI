@@ -1,5 +1,5 @@
-"""Point-probe for T3 (session_log_restir_7 "Test 1b": support-mismatch
-stress test + ESS/Rao-Blackwell).
+"""Point-probe for T3 ("Test 1b": support-mismatch stress test +
+ESS/Rao-Blackwell).
 
 Same 5-pixel neighborhood as T2, but pixel 0 has a narrow, spectrally-offset
 absorption tint (sigma=6nm, centered 135nm from the light's peak) instead of
@@ -9,8 +9,8 @@ effect. Each pixel streams M=4 candidates into its own reservoir before
 spatial reuse (a realistic ReSTIR spatial-reuse setup), rather than
 T2/T4's single-candidate-per-pixel simplification.
 
-Historical trajectory (`session_log_restir_7_tier4_spatial_reuse_probes.md`
-sec 2): first-pass canonical combine looked biased (z=-16.96 at N=20,000);
+Historical trajectory: first-pass canonical combine looked biased
+(z=-16.96 at N=20,000);
 an ESS diagnostic on pixel 0's reservoir revealed near-total weight
 degeneracy (ESS~1.02/4); a Rao-Blackwellized re-check (average pixel 0's
 own M candidates directly instead of picking one via its reservoir's
@@ -25,9 +25,9 @@ and a Rao-Blackwellized combine are unbiased in expectation, and (c) the
 RB combine has strictly lower variance -- the actual point of
 Rao-Blackwellization (law of total variance), not a bias fix.
 
-The Rao-Blackwellization itself isn't exposed by any src/ module (per
-`forward_paper1_test_suite.md`'s note that this is a diagnostic technique,
-not new theory) -- it's implemented here directly on top of
+The Rao-Blackwellization itself isn't exposed by any src/ module (it's a
+diagnostic technique, not new theory) -- it's implemented here directly on
+top of
 `mis_combine.balance_heuristic_weight` (module 4) and
 `furnace_canary.effective_sample_size` (module 9).
 """

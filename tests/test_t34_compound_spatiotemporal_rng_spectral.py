@@ -1,6 +1,5 @@
-"""Point-probe for T34 (`addendum_session11_13_test_plan_extension.md`
-section "T34 -- compound spatiotemporal, spectral stream (completes the
-full 5-cell matrix)"):
+"""Point-probe for T34 (compound spatiotemporal, spectral stream --
+completes the full 5-cell matrix):
 
 Same four seeding schemes and same `(frame_idx, neighbor_idx)` grid as T33,
 applied to the SPECTRAL stream's own resampling draw (species categorical
