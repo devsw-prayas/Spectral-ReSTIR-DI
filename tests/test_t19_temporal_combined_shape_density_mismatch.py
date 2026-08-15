@@ -1,11 +1,9 @@
-"""Point-probe for T19 (session_log_restir_9b Test 3c: combined shape +
-density mismatch).
+"""Point-probe for T19 (Test 3c: combined shape + density mismatch).
 
 Test 3a/T18 isolated a pure gen/eval AMPLITUDE mismatch on an otherwise
 IDENTICAL shape ("same spectral shape both times, isolating the mechanism
 from Test 2's shape mismatch"). Test 3c/T19 stacks a genuine SHAPE
-distortion on top: the session log's own quadrature-verification section
-describes this as history's eval-time target having a different sigma than
+distortion on top: history's eval-time target has a different sigma than
 current's own target (`sigma_hist=8` vs `sigma_cur=20`) -- i.e. current and
 history genuinely have different LOCAL targets at the destination domain,
 not just a stale amplitude on an otherwise-shared shape.

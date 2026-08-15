@@ -2,17 +2,16 @@
 weight bug v1, patched with a hard reject gate v2 -- precursor to A9/A10,
 no A-item support of its own).
 
-Per `restir_full_inventory_chronological.md`'s Session 9 entry: "caught a
-reservoir-weight formula bug (v1), patched with a hard reject gate (v2) --
-without establishing whether the corrected formula alone (no gate) would
-already have been unbiased. Left open, closed in Session 9b." The original
-Session 9 log was never committed as a standalone file (session_log_restir_9b's
-own header says so explicitly), so this probe reconstructs the STRUCTURE of
-that finding from the inventory's description, using this repo's own
-established "naive confidence-share" combine bug (the exact mechanism T5
-caught in the spatial case: `m_i = c_i / sum_j c_j`, no target-shape
-reweighting at all) as bug v1 -- the same failure class the session log
-calls "reproducing the known spatial failure mode temporally."
+Historical narrative: an early temporal probe caught a reservoir-weight
+formula bug (v1), patched with a hard reject gate (v2) -- without
+establishing whether the corrected formula alone (no gate) would already
+have been unbiased. Left open, closed in a later session. The original log
+of that finding was never committed as a standalone file, so this probe
+reconstructs the STRUCTURE of that finding from its surviving description,
+using this repo's own established "naive confidence-share" combine bug (the
+exact mechanism T5 caught in the spatial case: `m_i = c_i / sum_j c_j`, no
+target-shape reweighting at all) as bug v1 -- the same failure class:
+reproducing the known spatial failure mode temporally.
 
 Three things this probe checks, matching the historical narrative precisely:
 1. v1 (naive confidence-share) is severely biased under a full-disocclusion
@@ -21,16 +20,15 @@ Three things this probe checks, matching the historical narrative precisely:
    specific tested case.
 3. **v2 is a blunt instrument, unlike the later-derived exact rule**: applied
    with the SAME conservative tau to a genuinely SAFE case (tiny but nonzero
-   gen-time density -- Coverage-Lemma-safe, per session_log_restir_9b Test
-   3b's own finding "any nonzero G_gen, however tiny, is fully clean"), v2's
-   graduated threshold discards history almost every trial anyway, losing
-   the temporal-reuse variance benefit for no bias reason -- while
-   `temporal_history.temporal_combine`'s actual derived rule
-   (`wsum_gen_gate=0.0`, an EXACT zero-vs-nonzero cliff, not a graduated
-   proxy) keeps this safe case's history and gets a real variance reduction
-   for it. This is the concrete content of "left open, closed in Session
-   9b" -- v2 could not have known the exact cliff without the Coverage
-   Lemma's derivation.
+   gen-time density -- Coverage-Lemma-safe, since any nonzero gen-time
+   density, however tiny, is fully clean), v2's graduated threshold discards
+   history almost every trial anyway, losing the temporal-reuse variance
+   benefit for no bias reason -- while `temporal_history.temporal_combine`'s
+   actual derived rule (`wsum_gen_gate=0.0`, an EXACT zero-vs-nonzero cliff,
+   not a graduated proxy) keeps this safe case's history and gets a real
+   variance reduction for it. This is the concrete content of "left open,
+   closed later" -- v2 could not have known the exact cliff without the
+   Coverage Lemma's derivation.
 """
 
 import sys

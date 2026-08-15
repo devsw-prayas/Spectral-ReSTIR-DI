@@ -1,23 +1,21 @@
 """Point-probe for T1 (Phase 1.1 rank-k surface reconnection probe).
 
-Historical source: `.claude/ref/addendum_fable5_crosscheck_phase1_1_findings.md`,
-Part B item 4 -- the ONLY surviving record (the original scratch scene at
-`/home/claude/rankk_probe/` is lost). Only the qualitative outcome survives:
-naive reuse ~70.8% biased, IS-reweight suffers severe variance blowup
-(~96% relative std at N=2e6) for spectrally well-separated species, detached
-joint-resample (Zeltner et al. 2021's category) confirmed unbiased. This
-file RECONSTRUCTS the mechanism with fresh concrete numbers -- not a literal
-replay of the lost scene -- same discipline as G8's retirement note
-(`forward_paper1_test_suite.md`) about not treating an unrecoverable
-historical number as gospel.
+Historical source: an early cross-check finding whose original scratch
+scene is lost, leaving only the qualitative outcome: naive reuse ~70.8%
+biased, IS-reweight suffers severe variance blowup (~96% relative std at
+N=2e6) for spectrally well-separated species, detached joint-resample
+(Zeltner et al. 2021's category) confirmed unbiased. This file
+RECONSTRUCTS the mechanism with fresh concrete numbers -- not a literal
+replay of the lost scene -- same discipline as G8's retirement note about
+not treating an unrecoverable historical number as gospel.
 
 Rank-k (k=2 species here) generalizes the rank-1 recorrelation lemma
 (`recorrelation_sampler.py`): species-mixing weights `pi_j(lambda_in)`
 genuinely DEPEND on the incoming-wavelength context, unlike the rank-1 case
 where there's only one species (mixing is trivial). No formal rank-k
-reconnection-validity theorem exists (flagged gap, T1/T7-T10 numeric-only
-per `forward_paper1_test_suite.md`) -- this is a standalone probe, not built
-on `shift_maps.py`/`mis_combine.py` (those are locked to the rank-1 scope).
+reconnection-validity theorem exists (flagged gap, T1/T7-T10 numeric-only)
+-- this is a standalone probe, not built on `shift_maps.py`/`mis_combine.py`
+(those are locked to the rank-1 scope).
 
 Mechanism: a candidate (species j, wavelength lambda) is generated at a
 SOURCE vertex under the source's own species-mixing weights `pi^S`. Reusing

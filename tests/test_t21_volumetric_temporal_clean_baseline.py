@@ -1,13 +1,13 @@
-"""Point-probe for T21 (addendum_volumetric_temporal_mclamping.md's "VTest 1":
-volumetric temporal reuse, clean baseline).
+"""Point-probe for T21 ("VTest 1": volumetric temporal reuse, clean
+baseline).
 
 First probe to combine module 7 (`temporal_history.temporal_combine`) with a
 genuinely volumetric target -- T17-T20 only ever used the flat rank-1
 surface-style target `a(lambda')*L_e(lambda')*G`; T12-T14 combined a
 volumetric target with `mis_combine.combine_reservoirs` directly (spatial,
 not temporal). This is the first union of the two: single FIXED vertex (no
-`C(z)` field -- matches the addendum's own single-pixel scope, static
-geometry, `temporal_history.py`'s locked v1 precondition), scalar optical
+`C(z)` field -- single-pixel scope, static geometry, `temporal_history.py`'s
+locked v1 precondition), scalar optical
 depth `C` shared by current and history this frame:
 
     p_hat(lambda') = a(lambda') * L_e(lambda') * exp(-a(lambda')*C) * G

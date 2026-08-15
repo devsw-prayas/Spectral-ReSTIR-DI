@@ -1,5 +1,5 @@
-"""Point-probe for T18 (session_log_restir_9b Test 3a: generation/evaluation
-target mismatch -- the real disocclusion mechanism).
+"""Point-probe for T18 (Test 3a: generation/evaluation target mismatch --
+the real disocclusion mechanism).
 
 Same continuous rank-1 target family as T17, but the history reservoir's
 weight was built under `p_hat_hist,gen = G_gen*a(lambda')*L_e(lambda')` (last
