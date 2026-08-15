@@ -1,5 +1,5 @@
-"""Symbolic (SymPy) proof of A12 (`restir_running_notes.md` section 11,
-"Support-collapse corollary"): real ReSTIR spatial/temporal reuse always
+"""Symbolic (SymPy) proof of A12 ("Support-collapse corollary"): real
+ReSTIR spatial/temporal reuse always
 includes the destination pixel's own freshly-generated reservoir as one term
 in the balance-heuristic combine -- never a substitute for it. Because that
 self-term's generation-time target IS the destination target exactly

@@ -1,8 +1,8 @@
-"""Symbolic (SymPy) proof for A1, "Reconnection-validity theorem, surface"
-(`restir_running_notes.md` section 2). A2 (volumetric, section 3) reduces to
-A1 "by inspection" per its own text (kernel algebra is shared, and the
-volumetric support piece has no Snell-type mechanism at all), so this file
-also closes out A2's only nontrivial, mechanizable content.
+"""Symbolic (SymPy) proof for A1, "Reconnection-validity theorem, surface."
+A2 (the volumetric analog) reduces to A1 by inspection -- its kernel algebra
+is the same, and the volumetric-only support piece has no Snell-type
+mechanism at all -- so this file also closes out A2's only nontrivial,
+mechanizable content.
 
 A1's proof has two directions:
 

@@ -1,10 +1,9 @@
 """T-tier point-probes for module 5 (freepath_sampler.py).
 
-V-E-1-style harness validation (session_log_restir_4): is the delta-tracking
-sampler itself unbiased, checked against an independent closed-form /
-quadrature ground truth? Two cases: homogeneous (majorant exact, reduces to
-plain exponential sampling) and heterogeneous (majorant loose, exercises
-null-collision rejection).
+Harness validation: is the delta-tracking sampler itself unbiased, checked
+against an independent closed-form / quadrature ground truth? Two cases:
+homogeneous (majorant exact, reduces to plain exponential sampling) and
+heterogeneous (majorant loose, exercises null-collision rejection).
 """
 
 import sys

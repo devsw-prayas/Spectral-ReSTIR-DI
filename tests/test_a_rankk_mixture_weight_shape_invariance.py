@@ -1,5 +1,5 @@
-"""Symbolic (SymPy) proof of A13-forward's shape-invariance criterion
-(`restir_running_notes.md` section 8): rank-k reconnection triviality
+"""Symbolic (SymPy) proof of A13-forward's shape-invariance criterion:
+rank-k reconnection triviality
 (`T==id`, `J==1`) holds iff every species amplitude `a_i(lambda')` is
 proportional to one shared shape -- the mixture-weight analog of A1's own
 "lambda-invariance of `p(y|lambda)`" criterion, applied here to

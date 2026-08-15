@@ -1,10 +1,9 @@
-"""Symbolic (SymPy) proof of A9v/A10v (`restir_running_notes.md` sections
-14-15): the volumetric-temporal Coverage Lemma condition holds
-UNCONDITIONALLY at every finite optical depth, in contrast to the surface
-case (A9, §12) where the condition is a genuine scene-dependent structural
-check that can fail (T18's disocclusion, `gen=0/eval>0`, exactly the -50%
-bias this repo's own `test_a_coverage_lemma_disocclusion_exact_bias.py`
-derives in closed form).
+"""Symbolic (SymPy) proof of A9v/A10v: the volumetric-temporal Coverage
+Lemma condition holds UNCONDITIONALLY at every finite optical depth, in
+contrast to the surface case (A9) where the condition is a genuine
+scene-dependent structural check that can fail (T18's disocclusion,
+`gen=0/eval>0`, exactly the -50% bias this repo's own
+`test_a_coverage_lemma_disocclusion_exact_bias.py` derives in closed form).
 
 **A9v's claim.** The volumetric target's optical-depth dependence lives
 entirely in a transmittance factor `exp(-a(lambda')*C)`. For ANY finite
