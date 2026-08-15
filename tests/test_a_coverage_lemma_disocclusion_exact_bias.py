@@ -1,8 +1,8 @@
 """Symbolic (SymPy) proof of A9's Coverage Lemma disocclusion bias, in exact
-closed form -- `restir_running_notes.md` section 12 states the Coverage
-Lemma's necessary-and-sufficient support condition and reports it
-"quadrature-verified exactly" against T18/Test 3a's measured -49.943% (vs.
-predicted -50.000%), but the predicted number itself was only ever computed
+closed form. The Coverage Lemma states a necessary-and-sufficient support
+condition for unbiased temporal reuse, and a disocclusion scenario (T18's
+Test 3a) was already quadrature-verified against a measured -49.943% (vs.
+predicted -50.000%) -- but the predicted number itself was only ever computed
 numerically (quadrature), never derived as a closed-form algebraic
 expression. This file supplies that derivation for T18's own shared-eval-
 target disocclusion scenario (Test 3a: `gen_hist≡0`, `eval_hist==eval_cur`,

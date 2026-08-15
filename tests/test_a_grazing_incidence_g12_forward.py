@@ -1,28 +1,27 @@
 """Symbolic (SymPy) limit proof for G12-forward
-(`addendum_session11_13_test_plan_extension.md` section 3,
-"grazing-incidence-as-section-7-analog"):
+("grazing-incidence-as-section-7-analog"):
 
 **Claim:** grazing incidence in reconnection (`cos_theta_o(xA) -> 0`, which
 makes `G(xA) -> 0` and the raw reprojection Jacobian `J_reproj -> infinity`)
 is not a distinct, genuinely moving singularity -- it is the SAME mechanism
-as Tier-0's own section-7 TIR fix (`snell_jacobian.tir_jacobian`): a factor
+as Tier-0's own TIR fix (`snell_jacobian.tir_jacobian`): a factor
 that vanishes exactly cancels a factor that diverges, leaving the COMBINED
 quantity finite (in fact `C^infinity`, here literally constant) at the
-would-be singular point. `session_log_restir_12.md` section 2 only checked
-this numerically (`epsilon` down to `1e-14`, rel. error `1e-16`). This file
-proves it as an exact symbolic limit -- the stronger, epsilon-independent
-statement -- for BOTH sides of the claimed correspondence, then makes the
-structural match itself an explicit, checked claim (matching leading-order
-series behavior at the singular point), not just two limits that happen to
-land on similar-looking finite numbers.
+would-be singular point. A numeric sweep already checked this down to
+`epsilon = 1e-14` (rel. error `1e-16`). This file proves it as an exact
+symbolic limit -- the stronger, epsilon-independent statement -- for BOTH
+sides of the claimed correspondence, then makes the structural match itself
+an explicit, checked claim (matching leading-order series behavior at the
+singular point), not just two limits that happen to land on similar-looking
+finite numbers.
 
 **Side A -- grazing reconnection (the new case G12-forward is about):**
 `G(xA;theta) = cos(theta)/dist1^2` (vanishes linearly as `theta -> pi/2`,
 `cos(theta) -> 0`); `J_reproj(theta) = [cos2/cos(theta)] * [dist1^2/dist2^2]`
 (diverges as `1/cos(theta)` in lockstep). Both factors are built EXACTLY as
 `test_t27_composition_lemma_real_jacobian.py`'s own real formula, specialized
-to the grazing parametrization `session_log_restir_12.md` section 2 uses
-(`xA`'s normal rotated by `theta`, `xB` fixed and never grazing).
+to a grazing parametrization (`xA`'s normal rotated by `theta`, `xB` fixed
+and never grazing).
 
 **Side B -- TIR (the section-7 mechanism this is claimed to match):** the
 raw (pre-simplified) Fresnel-power/solid-angle-Jacobian factors underlying

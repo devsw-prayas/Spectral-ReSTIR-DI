@@ -1,14 +1,14 @@
 """Symbolic (SymPy) proof of A8's base estimator-form collapse theorem
-(`restir_running_notes.md` section 10) at reconnection-valid vertices, for
-DISTINCT per-reservoir targets -- a strictly more general claim than
+at reconnection-valid vertices, for DISTINCT per-reservoir targets -- a
+strictly more general claim than
 `test_a_balance_heuristic_shared_target_collapse.py`, which additionally
 assumed every reservoir shares one common target function. That file's
 proof only kicks in downstream of THIS collapse (it starts from the ordinary
 balance heuristic already having been reached); this file proves the
 upstream step -- substituting A1/A2's `T==id`, `J==1` condition into the
 generic shift-aware MIS weight -- and the partition-of-unity property A9's
-own Coverage Lemma derivation leans on (`restir_running_notes.md` section 12:
-"since Sum_i m_i(x) = 1 wherever p_hat_d(x)>0") but never separately proves.
+own Coverage Lemma derivation leans on ("since Sum_i m_i(x) = 1 wherever
+p_hat_d(x)>0") but never separately proves.
 
 **Claim 1 (A8's base collapse).** The generic shift-aware weight
 
@@ -16,8 +16,7 @@ own Coverage Lemma derivation leans on (`restir_running_notes.md` section 12:
 
 collapses, once every `T_{i->j}` is substituted with the identity map and
 every Jacobian with 1 (A1/A2's reconnection-validity condition, holding
-simultaneously across all pairs at such a vertex, per the running notes),
-to:
+simultaneously across all pairs at such a vertex), to:
 
     m_i(y) = c_i*p_hat_i(y) / Sum_j c_j*p_hat_j(y)
 

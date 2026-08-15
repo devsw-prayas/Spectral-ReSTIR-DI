@@ -1,5 +1,5 @@
-"""Symbolic (SymPy) proof of A11 (`restir_running_notes.md` section 17,
-"Free-path/event-type score-term identity"): the value-level ratio identity
+"""Symbolic (SymPy) proof of A11 ("Free-path/event-type score-term
+identity"): the value-level ratio identity
 `E[1(i)*f_i(theta)/p_i(theta)] = Sum_i f_i(theta)` was already algebraically
 obvious (p_i cancels for any theta). The actual open question in the running
 notes is at the DERIVATIVE level -- for a differentiable-rendering-style
@@ -22,7 +22,7 @@ textbook identity being probed, not this repo's own claim -- test 1 below
 just confirms SymPy agrees with it for a generic `p_i(theta)`, `h_i(theta)`.
 
 **The A11-specific content** is what happens once `h_i := f_i/p_i` (the
-inverse-pdf ratio structure named in the running notes):
+inverse-pdf ratio structure named in A11):
 
     pathwise term:  p_i * d/dtheta[f_i/p_i] = f_i' - f_i*p_i'/p_i
     score term:     p_i * (p_i'/p_i) * (f_i/p_i) = f_i*p_i'/p_i
@@ -37,8 +37,8 @@ both terms present.
 **Why "no REINFORCE term needed... provided built correctly" is true, and
 what "correctly" means:** if the estimator is implemented as detached-pdf
 autodiff (the standard practice for inverse-pdf ratio estimators, and this
-repo's actual convention, per `restir_running_notes.md`'s note that the
-current oracle has no stochastic per-vertex event-type sampling at all) --
+repo's actual convention -- the current oracle has no stochastic
+per-vertex event-type sampling at all) --
 i.e. `p_i` is held CONSTANT in the differentiation graph even though its
 value came from a theta-dependent formula -- then the score term is
 identically zero (`p_i'=0` in the detached graph) and the pathwise term
@@ -94,8 +94,8 @@ def test_detached_pdf_pathwise_term_alone_already_correct():
     # even though it numerically came from a theta-dependent formula. Then
     # the score term is identically zero (p_i'=0) and the pathwise term
     # alone -- no REINFORCE correction added -- already equals the true
-    # derivative exactly. This is the actual claim in restir_running_notes.md
-    # section 17 ("no REINFORCE term needed if built correctly").
+    # derivative exactly. This is A11's own claim: "no REINFORCE term needed
+    # if built correctly."
     theta = sp.symbols("theta")
     n = 5
     p_const = sp.symbols(f"p0:{n}", positive=True)  # detached: plain constants

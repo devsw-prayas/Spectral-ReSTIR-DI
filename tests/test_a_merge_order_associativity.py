@@ -1,16 +1,15 @@
 """Symbolic (SymPy) proof of T32's merge-order-invariance claim
-(`addendum_session11_13_test_plan_extension.md`, "T32 -- compound
-spatiotemporal, merge-order invariance"): under T32's exact scope (every
-source shares one eval-time target, every pairwise shift is identity, no
-`m_cap`), `combine_reservoirs`' output `.wsum`/`.confidence` are provably
-independent of how the sources are grouped into intermediate combine calls.
+("T32 -- compound spatiotemporal, merge-order invariance"): under T32's
+exact scope (every source shares one eval-time target, every pairwise shift
+is identity, no `m_cap`), `combine_reservoirs`' output `.wsum`/`.confidence`
+are provably independent of how the sources are grouped into intermediate
+combine calls.
 
 `test_t32_merge_order_invariance.py` confirms this only at concrete
 floating-point values, across a handful of random seeds (`~1e-9` relative
-tolerance, matching the historical session's own `~1e-15` finding). This file
-proves the stronger, seed-independent claim: a 2-level-nesting symbolic proof
-(`project_infra_checkpoint.md`'s own suggested next step for this item),
-generalized to an inductive argument for ARBITRARY nesting depth.
+tolerance). This file proves the stronger, seed-independent claim: a
+2-level-nesting symbolic proof, generalized to an inductive argument for
+ARBITRARY nesting depth.
 
 **Building block 1 (single combine-call formula, this repo's actual code):**
 combined via `mis_combine.combine_reservoirs` under this scope, using T22's
@@ -120,8 +119,7 @@ def test_flat_equals_spatial_then_temporal():
 def test_all_three_reduce_to_total_raw_wsum_over_total_raw_m():
     # Confirms the closed form itself (not just mutual equality): the common
     # value all three orderings reach is literally
-    # Sum(all raw wsum)/Sum(all raw M) -- the exact quantity
-    # `project_infra_checkpoint.md`'s T32 entry states by hand.
+    # Sum(all raw wsum)/Sum(all raw M).
     w, m = _make_grid_symbols()
     flat_wsum, flat_conf = _raw_combine([(w[t, n], m[t, n]) for t in (0, 1) for n in (0, 1)])
 
