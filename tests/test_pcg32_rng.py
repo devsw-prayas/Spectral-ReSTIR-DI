@@ -4,9 +4,8 @@ Covers basic PCG32 correctness (determinism, 32-bit output range, uniformity)
 and T25: whether the production `pixelId*1973 + sampleIdx*9277 + 1` keying
 scheme (transcribed in pcg32_rng.py's module docstring) actually decorrelates
 a pixel's current-frame draws from its own history reservoir's draws once
-`frame_index` is folded into that key. Per forward_paper1_test_suite.md, T25
-has no A-item backing it -- this is a genuine open empirical probe, not a
-foregone-conclusion pass.
+`frame_index` is folded into that key. T25 has no analytical theorem backing
+it -- this is a genuine open empirical probe, not a foregone-conclusion pass.
 """
 
 import sys

@@ -1,5 +1,4 @@
-"""Point-probe for T11 (session_log_restir_3 V-D(b): spectral-separation
-control, "coupling collapse").
+"""Point-probe for T11 (spectral-separation control, "coupling collapse").
 
 Historical V-D found a *bounded, smooth* coupling channel between species
 at a fixed vertex: perturbing a species-1 band parameter (e.g. its
@@ -21,8 +20,8 @@ finite-difference derivative of species 2's own local-target integral
 w.r.t. species 1's absorption-band center `mu1`, checked at two step sizes
 for FD stability (V9 discipline, matching the project's closed-form-inner-
 integral convention). Fresh concrete parameters, not the historical exact
-numbers (`session_log_restir_3.md` sec 0's standing "not recoverable"
-caveat) -- the collapse ratio here comes out far larger than the historical
+numbers (those were never recorded precisely enough to reproduce exactly)
+-- the collapse ratio here comes out far larger than the historical
 150x/800x, which is expected: a fresh reconstruction with different band
 widths/light-spectrum support has no reason to reproduce the same
 magnitude, only the same qualitative "collapses by orders of magnitude"

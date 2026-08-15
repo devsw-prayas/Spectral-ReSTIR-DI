@@ -3,7 +3,7 @@
 Checks the two claims module 2 encodes:
   1. Recorrelation lemma: p(lambda|lambda') is independent of lambda' —
      sampling with two very different lambda' values must reproduce the
-     SAME histogram (restir_running_notes.md Tier-0 item 3).
+     SAME histogram.
   2. The joint-target product-CDF sampler reproduces a(lambda')*L_e(lambda')
      up to normalization, against a small closed-form discrete grid.
 """

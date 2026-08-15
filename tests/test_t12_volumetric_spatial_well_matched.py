@@ -1,5 +1,5 @@
-"""Point-probe for T12 (session_log_restir_8 "Test 1": volumetric spatial
-reuse, well-matched vertex neighborhood).
+"""Point-probe for T12 ("Test 1": volumetric spatial reuse, well-matched
+vertex neighborhood).
 
 First point-probe to combine THREE things T6 kept separate: a genuinely
 volumetric target with a position-dependent transmittance term (via
@@ -13,12 +13,11 @@ to a constant j=0 with concentration 1 -- this is NOT the rank-k trichotomy
 of T7-T11, just reusing the module's `transmittance_fn` hook for its
 intended volumetric purpose).
 
-Model (session_log_restir_8): single rank-1 fluorophore, absorption `a(lambda')`
+Model: single rank-1 fluorophore, absorption `a(lambda')`
 and light `L_e(lambda')` both Gaussian. Each pixel has its own FIXED vertex
-position `z_i` (free-path sampling already landed there this frame --
-`freepath_sampler.py`/module 5 is NOT invoked here, same as the session log's
-own framing: "representing where free-path sampling already landed for that
-pixel this frame"). Per-pixel target:
+position `z_i`, representing where free-path sampling already landed for
+that pixel this frame (`freepath_sampler.py`/module 5 is NOT invoked here).
+Per-pixel target:
 
     p_hat(z_i, lambda') = a(lambda') * L_e(lambda') * exp(-a(lambda')*C(z_i)) * G_i
 

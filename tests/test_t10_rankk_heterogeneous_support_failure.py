@@ -1,7 +1,7 @@
-"""Point-probe for T10 (session_log_restir_3 V-C, support failure: rank-2
-heterogeneous fixed-vertex, -78.4%-class hard support violation).
+"""Point-probe for T10 (support failure: rank-2 heterogeneous fixed-vertex,
+-78.4%-class hard support violation).
 
-Historical V-C support-failure config: species 0's concentration hits an
+Historical support-failure config: species 0's concentration hits an
 exact hard step to zero above z0=0.5. Candidates generated in the dead zone
 (z_A=0.8, c1(z_A)=0) are reused at z_B=0.2 where c1(z_B)>0. Result: naive
 -18.3% (transfers, expected), fix-local -0.03% (clean, as always), and
@@ -21,9 +21,9 @@ that's alive at the destination (see module docstring and
 `test_heterogeneous_lookup.py`'s own `test_is_reweight_structurally_biased_under_support_violation`,
 which validates the identical mechanism at exact-quadrature precision).
 This probe promotes that same mechanism to a T-tier MC point-probe with the
-historical z_A/z_B roles and z-score/variance framing, reconstructed
-parameters per the session log's own "not recoverable" note
-(`session_log_restir_3.md` sec 0).
+historical z_A/z_B roles and z-score/variance framing, using freshly
+reconstructed parameters (the original historical parameters were never
+recorded precisely enough to reproduce exactly).
 """
 
 import sys
