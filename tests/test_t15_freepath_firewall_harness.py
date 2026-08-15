@@ -1,6 +1,5 @@
-"""Point-probe for T15 (session_log_restir_4 V-E-1: free-path firewall
-harness -- is a real, lambda_s-coupled, stochastic free-path sampler
-unbiased on its own?).
+"""Point-probe for T15 (free-path firewall harness -- is a real,
+lambda_s-coupled, stochastic free-path sampler unbiased on its own?).
 
 `tests/test_freepath_sampler.py` already checks `sample_free_path`'s
 empirical hit/miss density against `free_path_pdf`/`miss_probability`

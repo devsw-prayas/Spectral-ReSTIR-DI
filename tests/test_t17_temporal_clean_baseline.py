@@ -1,5 +1,4 @@
-"""Point-probe for T17 (session_log_restir_9b Test 1: clean temporal
-baseline, unchanged history).
+"""Point-probe for T17 (Test 1: clean temporal baseline, unchanged history).
 
 Continuous rank-1 fluorophore target `p_hat(lambda') = a(lambda')*L_e(lambda')*G`,
 current and history reservoirs both generated under the SAME target this

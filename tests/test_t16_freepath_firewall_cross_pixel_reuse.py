@@ -1,5 +1,5 @@
-"""Point-probe for T16 (session_log_restir_4 V-E-2: free-path firewall,
-cross-pixel reuse under real, independently free-path-sampled z_A and z_B).
+"""Point-probe for T16 (free-path firewall, cross-pixel reuse under real,
+independently free-path-sampled z_A and z_B).
 
 T9's counter-gradient rank-2 trichotomy (naive biased / IS-reweight
 unbiased-but-costly / fix-local unbiased-and-cheap) used EXTERNALLY FIXED

@@ -1,5 +1,5 @@
-"""Point-probe for T14 (session_log_restir_8 "Test 3": volumetric spatial
-reuse, extreme optical-depth contrast + ESS diagnostic).
+"""Point-probe for T14 ("Test 3": volumetric spatial reuse, extreme
+optical-depth contrast + ESS diagnostic).
 
 Same target family and logistic-`C(z)` construction as T13, tuned to a wider
 contrast: vertex cluster `z in {0.10, 0.40, 0.55, 0.70, 0.95}` gives `C(z)`
@@ -57,7 +57,7 @@ SHALLOW = 4  # near-transparent pixel -- largest local-context mismatch from DES
 
 C0, C1, K, Z0 = 0.5, 10.0, 12.0, 0.35  # logistic concentration, wider contrast than T13
 
-M = 8  # candidates streamed per pixel, matching session_log_restir_8's own convention
+M = 8  # candidates streamed per pixel
 
 
 def _softplus(x: float) -> float:

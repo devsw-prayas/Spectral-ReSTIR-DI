@@ -1,5 +1,5 @@
-"""Point-probe for T13 (session_log_restir_8 "Test 2": volumetric spatial
-reuse, vertices spread across a steep C(z) transition, two destinations).
+"""Point-probe for T13 ("Test 2": volumetric spatial reuse, vertices spread
+across a steep C(z) transition, two destinations).
 
 Same target family as T12 (`p_hat(z_i, lambda') = a(lambda')*L_e(lambda')*
 exp(-a(lambda')*C(z_i))*G_i`, `heterogeneous_lookup.local_target`'s
