@@ -1,5 +1,5 @@
-"""Point-probe for T9 (session_log_restir_3 V-C, counter-gradient: rank-2
-heterogeneous fixed-vertex trichotomy).
+"""Point-probe for T9 (counter-gradient: rank-2 heterogeneous fixed-vertex
+trichotomy).
 
 Historical V-C is the DI-faithful variant: the destination vertex z_B is
 FIXED (the pixel's own path already chose it), and a spectral candidate
@@ -17,8 +17,8 @@ generation (`species_weight` with a transmittance-blind normalizer) omits
 the medium's self-absorption term that the true `local_target` carries, so
 naive reuse across a genuine concentration GRADIENT (not the T7/T8
 homogeneous case) is biased. Reconstructed parameters, not the historical
-exact numbers (`session_log_restir_3.md` sec 0 flags its own bands as
-non-recoverable) -- concentration profile is a sigmoid transition rather
+exact numbers (the original bands were already flagged as non-recoverable)
+-- concentration profile is a sigmoid transition rather
 than the historical exact curve, tuned to reproduce the same qualitative
 trichotomy: naive decisively biased, IS-reweight unbiased-but-costly,
 fix-local unbiased and comparatively cheap.

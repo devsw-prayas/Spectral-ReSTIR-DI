@@ -2,13 +2,12 @@
 
 Discrete 3-item target (same `p_hat = {0: 1.0, 1: 2.0, 2: 3.0}` family used
 by `test_ris_reservoir.py` / `test_mis_combine.py`), covering the Coverage
-Lemma (A9) and Temporal Tier-3 Corollary (A10, restir_running_notes.md
-§11-12): clean unchanged-history combine (T17), gen/eval target mismatch
-that stays unbiased because support never collapses (T18-safe / session
-9b's Test 2), the `wsum_gen==0` disocclusion gate dropping a history
-reservoir entirely rather than letting its stale confidence pollute the MIS
-denominator (T18-unsafe / session 9b's Test 3a), and M-clamping the input
-side, not the output (T23).
+Lemma (A9) and Temporal Tier-3 Corollary (A10): clean unchanged-history
+combine (T17), gen/eval target mismatch that stays unbiased because support
+never collapses (T18-safe), the `wsum_gen==0` disocclusion gate dropping a
+history reservoir entirely rather than letting its stale confidence pollute
+the MIS denominator (T18-unsafe), and M-clamping the input side, not the
+output (T23).
 """
 
 import sys
